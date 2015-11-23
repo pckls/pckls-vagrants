@@ -1,0 +1,24 @@
+---
+classes:
+    - apache
+    - apache::mod::php
+    - apache::mod::rewrite
+    - mysql::client
+    - org::roles::icinga2web
+
+apache::default_vhost: true
+apache::mpm_module: prefork
+
+org::profiles::icingaweb2::ido_db_host: icinga2dbm1.vagrant.iinet.net.au
+org::profiles::icingaweb2::ido_db_name: icinga2
+org::profiles::icingaweb2::ido_db_pass: icinga2
+org::profiles::icingaweb2::ido_db_port: '3306'
+org::profiles::icingaweb2::ido_db_user: icinga2
+org::profiles::icingaweb2::install_method: git
+org::profiles::icingaweb2::manage_apache_vhost: true
+org::profiles::icingaweb2::manage_repo: false
+org::profiles::icingaweb2::web_db_host: icinga2dbm1.vagrant.iinet.net.au
+org::profiles::icingaweb2::web_db_name: icinga2web
+org::profiles::icingaweb2::web_db_pass: icinga2web
+org::profiles::icingaweb2::web_db_port: '3306'
+org::profiles::icingaweb2::web_db_user: icinga2web

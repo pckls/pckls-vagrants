@@ -1,0 +1,41 @@
+---
+puppetmaster1:
+    boxname: puppetlabs/centos-7.0-64-nocm
+    boxurl:
+    cpus: 1
+    memory: 4096
+    ports:
+    puppet: agent
+    scripts:
+        - bootstrap_master.sh
+haproxy1:
+    boxname: puppetlabs/centos-7.0-64-nocm
+    cpus: 1
+    memory: 512
+    puppet: agent
+    scripts:
+        - bootstrap_agent.sh
+puppetdb1:
+    boxname: puppetlabs/centos-7.0-64-nocm
+    cpus: 1
+    memory: 2048
+    ports:
+        - { host: 8000, guest: 80 }
+        - { host: 7443, guest: 443 }
+    puppet: agent
+    scripts:
+        - bootstrap_agent.sh
+puppetcompile1:
+    boxname: puppetlabs/centos-7.0-64-nocm
+    cpus: 1
+    memory: 2048
+    puppet: agent
+    scripts:
+        - bootstrap_agent.sh
+puppetcompile2:
+    boxname: puppetlabs/centos-7.0-64-nocm
+    cpus: 1
+    memory: 2048
+    puppet: agent
+    scripts:
+        - bootstrap_agent.sh

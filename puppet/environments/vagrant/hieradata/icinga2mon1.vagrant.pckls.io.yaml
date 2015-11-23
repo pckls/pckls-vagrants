@@ -1,0 +1,11 @@
+---
+classes:
+    - mysql::client
+    - org::roles::icinga2mon
+
+org::profiles::icinga2::db_host: icinga2dbm1.vagrant.iinet.net.au
+org::profiles::icinga2::db_name: icinga2
+org::profiles::icinga2::db_pass: icinga2
+org::profiles::icinga2::db_port: '3306'
+org::profiles::icinga2::db_type: mysql
+org::profiles::icinga2::db_user: icinga2

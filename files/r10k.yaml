@@ -1,0 +1,18 @@
+cachedir: '/opt/puppetlabs/server/data/r10k'
+sources:
+    soe:
+        basedir: '/etc/puppetlabs/code/environments'
+        prefix: false
+        remote: 'https://github.com/pckls/puppet-r10k-soe.git'
+    org1:
+        basedir: '/etc/puppetlabs/code/environments'
+        prefix: true
+        remote: 'https://github.com/pckls/puppet-r10k-org1.git'
+    org2:
+        basedir: '/etc/puppetlabs/code/environments'
+        prefix: true
+        remote: 'https://github.com/pckls/puppet-r10k-org2.git'
+    org3:
+        basedir: '/etc/puppetlabs/code/environments'
+        prefix: true
+        remote: 'https://github.com/pckls/puppet-r10k-org3.git'

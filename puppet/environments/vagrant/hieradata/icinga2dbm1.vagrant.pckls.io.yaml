@@ -1,0 +1,19 @@
+---
+classes:
+    - org::roles::icinga2dbm
+
+org::profiles::mysql::dbs:
+    'icinga2':
+        ensure: present
+        grant: ['ALL']
+        host: '%'
+        password: icinga2
+        user: icinga2
+    'icinga2web':
+        ensure: present
+        grant: ['ALL']
+        host: '%'
+        password: icinga2web
+        user: icinga2web
+org::profiles::mysql::remove_default_accounts: true
+org::profiles::mysql::root_password: supersecretpassword
