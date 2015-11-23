@@ -9,9 +9,6 @@ then
     rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
     yum install -y puppet-agent
 
-    # Setup /etc/hosts
-    /opt/puppetlabs/bin/puppet resource host puppetmaster1.vagrant.pckls.io host_aliases=puppet
-
     # Disable firewall (manage later with Puppet)
     /opt/puppetlabs/bin/puppet resource service firewalld ensure=stopped
 

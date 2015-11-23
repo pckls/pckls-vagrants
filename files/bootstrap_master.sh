@@ -13,11 +13,11 @@ then
     /opt/puppetlabs/puppet/bin/gem install r10k
     mkdir /etc/puppetlabs/r10k && cp /vagrant/files/r10k.yaml /etc/puppetlabs/r10k/r10k.yaml
 
+    # Move autosign.conf into place
+    cp /vagrant/files/autosign.conf /etc/puppetlabs/puppet/autosign.conf
+
     # Move Hiera config into place
     #cp /vagrant/files/hiera.yaml /etc/puppetlabs/code/hiera.yaml
-
-    # Setup /etc/hosts
-    /opt/puppetlabs/bin/puppet resource host puppetmaster1.vagrant.pckls.io host_aliases=puppet
 
     # Disable firewall (manage later with Puppet)
     /opt/puppetlabs/bin/puppet resource service firewalld ensure=stopped

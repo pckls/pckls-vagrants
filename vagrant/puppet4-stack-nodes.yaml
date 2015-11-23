@@ -7,6 +7,7 @@ puppetmaster1:
     ports:
     puppet: agent
     scripts:
+        - bootstrap_hosts.sh
         - bootstrap_master.sh
 haproxy1:
     boxname: puppetlabs/centos-7.0-64-nocm
@@ -14,6 +15,7 @@ haproxy1:
     memory: 512
     puppet: agent
     scripts:
+        - bootstrap_hosts.sh
         - bootstrap_agent.sh
 puppetdb1:
     boxname: puppetlabs/centos-7.0-64-nocm
@@ -24,6 +26,7 @@ puppetdb1:
         - { host: 7443, guest: 443 }
     puppet: agent
     scripts:
+        - bootstrap_hosts.sh
         - bootstrap_agent.sh
 puppetcompile1:
     boxname: puppetlabs/centos-7.0-64-nocm
@@ -31,6 +34,7 @@ puppetcompile1:
     memory: 2048
     puppet: agent
     scripts:
+        - bootstrap_hosts.sh
         - bootstrap_agent.sh
 puppetcompile2:
     boxname: puppetlabs/centos-7.0-64-nocm
@@ -38,4 +42,5 @@ puppetcompile2:
     memory: 2048
     puppet: agent
     scripts:
+        - bootstrap_hosts.sh
         - bootstrap_agent.sh
