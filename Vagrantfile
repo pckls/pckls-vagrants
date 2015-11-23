@@ -12,7 +12,7 @@ require 'yaml'
 NODES = YAML.load_file('nodes.yaml')
 
 # Automatically manage plugins
-REQUIRED_PLUGINS = %w( vagrant-hosts )
+REQUIRED_PLUGINS = %w( vagrant-hosts vagrant-hostmanager )
 REQUIRED_PLUGINS.each do |plugin|
     system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
 end
@@ -21,6 +21,12 @@ DOMAIN = ".vagrant.pckls.io"
 
 # Do the needful
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    # TODO: Add in hostmanager
+    #node.hostmanager.enabled = true
+    #node.hostmanager.manage_host = true
+    #node.hostmanager.ignore_private_ip = false
+    #node.hostmanager.include_offline = true
 
     NODES.each do |name, data|
 
@@ -52,7 +58,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 node.vm.guest = :windows
             else
                 node.vm.hostname = name + DOMAIN
+
+                # TODO: Add in hostmanager
+                #node.hostmanager.aliases = %w(example-box.localdomain example-box-alias)
+
+                # TODO: Remove this
                 node.vm.provision :hosts
+
                 scripts = data["scripts"]
                 scripts.to_a.each do |script|
                     node.vm.provision :shell, :path => "files/" + script
