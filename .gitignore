@@ -1,3 +1,4 @@
 .vagrant
+nodes.yaml
 puppet/modules/*
 puppet/environments/vagrant/modules/*
