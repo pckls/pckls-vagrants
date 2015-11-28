@@ -22,12 +22,6 @@ DOMAIN = ".vagrant.pckls.io"
 # Do the needful
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-    # TODO: Add in hostmanager
-    #node.hostmanager.enabled = true
-    #node.hostmanager.manage_host = true
-    #node.hostmanager.ignore_private_ip = false
-    #node.hostmanager.include_offline = true
-
     NODES.each do |name, data|
 
         config.vm.define name do |node|
@@ -58,13 +52,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 node.vm.guest = :windows
             else
                 node.vm.hostname = name + DOMAIN
-
-                # TODO: Add in hostmanager
-                #node.hostmanager.aliases = %w(example-box.localdomain example-box-alias)
-
-                # TODO: Remove this
                 node.vm.provision :hosts
-
                 scripts = data["scripts"]
                 scripts.to_a.each do |script|
                     node.vm.provision :shell, :path => "files/" + script
@@ -73,7 +61,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
             case data["puppet"]
             when "agent"
-                node.vm.provision :puppet_server
+                node.vm.provision "puppet_server" do |puppet|
+                    puppet.puppet_server = data["puppet_server"]
+                end
             when "apply"
                 if File.exists?("puppet/Puppetfile")
                     node.r10k.puppet_dir = 'puppet'
