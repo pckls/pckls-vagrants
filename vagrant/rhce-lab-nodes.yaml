@@ -1,0 +1,15 @@
+---
+server:
+    boxname: puppetlabs/centos-7.0-64-puppet
+    boxurl:
+    cpus: 1
+    memory: 2048
+    ports:
+    puppet: apply
+    scripts:
+client:
+    boxname: puppetlabs/centos-7.0-64-puppet
+    cpus: 1
+    memory: 1024
+    puppet: apply
+    scripts:
